@@ -1,0 +1,20 @@
+
+.toolbar-item {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.active {
+    color: #c7c7c7;
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+
+
+}
+
+@media screen and (max-width: 575px) {
+
+}
