@@ -4,6 +4,9 @@ import java.time.LocalDate;
 import java.time.Period;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author Jarom Schertz An entity object representing an employee
@@ -12,7 +15,10 @@ import javax.persistence.Entity;
 public class Employee {
 
 //	name, job title, age, start and end date of employment.
-	private String name;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long employeeId;
+	private String name; //should this be split this into first and last name?
 	private String jobTitle;
 	private LocalDate birthDate;
 	private LocalDate startDate;

@@ -1,1 +1,42 @@
-<p>add-employee works!</p>
+<mat-toolbar>
+    <span>Add Employee</span>
+</mat-toolbar>
+
+
+<form class="form-class" [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+    <div>
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstName" matInput>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input formControlName="lastName" matInput>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Job Title</mat-label>
+            <input formControlName="jobTitle" matInput>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Birth Date</mat-label>
+            <input formControlName="birthDate" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Start Date</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="picker2">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button>Submit</button>
+</form>
