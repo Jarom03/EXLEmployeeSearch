@@ -18,18 +18,19 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long employeeId;
-	private String name; //should this be split this into first and last name?
+	private String firstName;
+	private String lastName;
 	private String jobTitle;
 	private LocalDate birthDate;
 	private LocalDate startDate;
 	private LocalDate endDate;
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getJobTitle() {
@@ -62,6 +63,14 @@ public class Employee {
 
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	/**

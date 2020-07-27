@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { Employee } from '../objects/employee';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-add-employee',
@@ -12,7 +13,7 @@ export class AddEmployeeComponent implements OnInit {
 
   employeeForm: FormGroup;
 
-  constructor() { }
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -43,7 +44,7 @@ export class AddEmployeeComponent implements OnInit {
     employee.birthDate = this.employeeForm.get("birthDate").value;
     employee.startDate = this.employeeForm.get("startDate").value;
 
-    console.log(JSON.stringify(employee));
+    this.employeeService.saveEmployee(employee);
   }
 
 }
