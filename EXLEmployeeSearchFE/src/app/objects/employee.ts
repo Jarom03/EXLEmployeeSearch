@@ -5,6 +5,7 @@ export class Employee {
     public birthDate: Date;
     public startDate: Date;
     public endDate: Date;
+    public age: number;
 
     constructor() {
         this.firstName = "";
@@ -13,5 +14,6 @@ export class Employee {
         this.birthDate = undefined;
         this.startDate = undefined;
         this.endDate = undefined;
+        this.age = 0;
     }
 }

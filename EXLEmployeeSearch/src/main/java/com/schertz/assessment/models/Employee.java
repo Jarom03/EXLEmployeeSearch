@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author Jarom Schertz An entity object representing an employee
@@ -24,6 +27,9 @@ public class Employee {
 	private LocalDate birthDate;
 	private LocalDate startDate;
 	private LocalDate endDate;
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
+	@Transient
+	private int age;
 
 	public String getFirstName() {
 		return firstName;
@@ -61,6 +67,14 @@ public class Employee {
 		return endDate;
 	}
 
+	public int getAge() {
+		return calculateAge();
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
 	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
@@ -75,7 +89,7 @@ public class Employee {
 
 	/**
 	 * Calculate the employees current age
-	 * @return
+	 * @return - years of age as integer
 	 */
 	public int calculateAge() {
 		LocalDate currentDate = LocalDate.now();

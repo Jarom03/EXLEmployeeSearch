@@ -19,6 +19,11 @@ import com.schertz.assessment.models.Employee;
 @Configuration
 public class EmployeeSearchConfigurer implements WebMvcConfigurer {
 
+	
+	/**
+	 * Add custom converter for converting json string to Employee object to app registry
+	 * This will allow auto conversion of Employee objects in the RestController
+	 */
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
 		
@@ -33,11 +38,13 @@ public class EmployeeSearchConfigurer implements WebMvcConfigurer {
 				try {
 					emp = mapper.readValue(source, Employee.class);
 				} catch (IOException e) {
-					e.printStackTrace(); //TODO:???
+					System.err.println("Unable to convert " + source + " to Employee object");
+					e.printStackTrace();
 				}
 				return emp;
 			}
 		}
+		
 		registry.addConverter(new JsonToEmployeeConverter());
 	}
 	

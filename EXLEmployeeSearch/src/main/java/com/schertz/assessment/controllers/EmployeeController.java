@@ -1,6 +1,7 @@
 package com.schertz.assessment.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,12 +37,24 @@ public class EmployeeController {
 		return ResponseEntity.ok().cacheControl(CacheControl.noCache()).body("Employee Saved");
 	}
 	
+	/**
+	 * Retrieves all employees from the database
+	 * NOTE: Configured CORS to allow any site origin for ease of testing. Typically this would be 
+	 * restricted to valid origins.
+	 */
 	@CrossOrigin(origins="*", methods=RequestMethod.GET) 
 	@GetMapping("/getAllEmployees")
 	public ResponseEntity<Iterable<Employee>> getAllEmployees() {
 		return ResponseEntity.ok().cacheControl(CacheControl.noCache()).body(employeeRepo.findAll());
 	}
 	
+	/**
+	 * Retrieves all employees from the database whose first or last name matches the fully or partially the string provided
+	 * NOTE: Configured CORS to allow any site origin for ease of testing. Typically this would be 
+	 * restricted to valid origins.
+	 * @param nameString - The string to search for
+	 * @return
+	 */
 	@CrossOrigin(origins="*", methods=RequestMethod.GET) 
 	@GetMapping("/searchEmployee")
 	public ResponseEntity<Iterable<Employee>> searchForEmployees(@RequestParam("name") String nameString) {
