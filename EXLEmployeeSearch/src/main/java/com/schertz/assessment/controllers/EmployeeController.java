@@ -1,7 +1,6 @@
 package com.schertz.assessment.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.http.CacheControl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -58,7 +57,7 @@ public class EmployeeController {
 	@CrossOrigin(origins="*", methods=RequestMethod.GET) 
 	@GetMapping("/searchEmployee")
 	public ResponseEntity<Iterable<Employee>> searchForEmployees(@RequestParam("name") String nameString) {
-		return ResponseEntity.ok().cacheControl(CacheControl.noCache()).body(employeeRepo.findByFirstNameLikeOrLastNameLike(nameString, nameString));
+		return ResponseEntity.ok().cacheControl(CacheControl.noCache()).body(employeeRepo.findByFirstNameLikeIgnoreCaseOrLastNameLikeIgnoreCase(nameString, nameString));
 		
 	}
 	

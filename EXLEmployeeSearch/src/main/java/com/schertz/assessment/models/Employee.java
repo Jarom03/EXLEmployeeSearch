@@ -24,6 +24,7 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String jobTitle;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private LocalDate birthDate;
 	private LocalDate startDate;
 	private LocalDate endDate;
