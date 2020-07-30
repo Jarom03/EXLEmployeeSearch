@@ -6,7 +6,8 @@ set MAVEN_HOME=/opt/apache-maven-3.6.3
 export PATH=$PATH:JAVA_HOME/bin:MAVEN_HOME/bin
 
 cd ./EXLEmployeeSearchFE
-ng build --prod
+npm install
+npx -p @angular/cli ng build --prod
 cd ../EXLEmployeeSearch
 mvn clean package
 mvn spring-boot:run
