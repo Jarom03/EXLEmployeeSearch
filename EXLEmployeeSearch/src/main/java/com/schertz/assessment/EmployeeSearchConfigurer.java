@@ -91,7 +91,7 @@ public class EmployeeSearchConfigurer implements WebMvcConfigurer {
 			objectMapper.registerModule(new JavaTimeModule());
 			try {
 				// read json file
-				List<Employee> employees = objectMapper.readValue(seedDataResource.getFile(),
+				List<Employee> employees = objectMapper.readValue(seedDataResource.getInputStream(),
 						new TypeReference<List<Employee>>() {
 						});
 

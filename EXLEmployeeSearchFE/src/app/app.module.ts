@@ -12,8 +12,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { AddEmployeeComponent } from './add-employee/add-employee.component';
+import { AddEmployeeComponent, EmployeeAddedComponent } from './add-employee/add-employee.component';
 import { SearchEmployeeComponent } from './search-employee/search-employee.component';
 import { EmployeeService } from './employee.service';
 
@@ -22,6 +23,7 @@ import { EmployeeService } from './employee.service';
   declarations: [
     AppComponent,
     AddEmployeeComponent,
+    EmployeeAddedComponent,
     SearchEmployeeComponent
   ],
   imports: [
@@ -35,7 +37,8 @@ import { EmployeeService } from './employee.service';
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule, 
+    MatSnackBarModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

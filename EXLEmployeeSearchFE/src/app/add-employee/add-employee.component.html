@@ -8,18 +8,27 @@
         <mat-form-field>
             <mat-label>First Name</mat-label>
             <input formControlName="firstName" matInput>
+            <mat-error *ngIf="employeeForm.get('firstName').hasError('required')">First Name is
+                <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field>
             <mat-label>Last Name</mat-label>
             <input formControlName="lastName" matInput>
+            <mat-error *ngIf="employeeForm.get('lastName').hasError('required')">Last Name is
+                <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div>
         <mat-form-field>
             <mat-label>Job Title</mat-label>
             <input formControlName="jobTitle" matInput>
+            <mat-error *ngIf="employeeForm.get('jobTitle').hasError('required')">Job Title is
+                <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div>
@@ -28,6 +37,9 @@
             <input formControlName="birthDate" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="employeeForm.get('birthDate').hasError('required')">Birth Date is
+                <strong>required</strong>
+            </mat-error>
         </mat-form-field>
     </div>
     <div>
@@ -36,7 +48,19 @@
             <input formControlName="startDate" matInput [matDatepicker]="picker2">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="employeeForm.get('startDate').hasError('required')">Start Date is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>End Date</mat-label>
+            <input formControlName="endDate" matInput [matDatepicker]="picker3">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
         </mat-form-field>
     </div>
     <button mat-raised-button>Submit</button>
+    <button type="button" (click)="clearForm()" mat-raised-button>Clear</button>
 </form>

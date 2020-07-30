@@ -4,14 +4,14 @@
 
 <div class="page-margin">
     <form class="form-class" [formGroup]="searchForm" (ngSubmit)="applyFilter()">
-        <span>
+        <span class="search-field">
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input formControlName="name" matInput>
             </mat-form-field>
         </span>
 
-        <span>
+        <span class="search-field">
             <mat-form-field>
                 <mat-label>Enter a date range</mat-label>
                 <mat-date-range-input [rangePicker]="picker">

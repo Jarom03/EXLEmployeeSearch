@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Employee } from '../objects/employee';
 import { EmployeeService } from '../employee.service';
@@ -13,7 +14,7 @@ export class AddEmployeeComponent implements OnInit {
 
   employeeForm: FormGroup;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -22,13 +23,14 @@ export class AddEmployeeComponent implements OnInit {
   /**
    * builds the reactive form
    */
-  private buildForm() {
+  public buildForm() {
     this.employeeForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      jobTitle: new FormControl(''),
-      birthDate: new FormControl(new Date()),
-      startDate: new FormControl(new Date())
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      jobTitle: new FormControl('', Validators.required),
+      birthDate: new FormControl('', Validators.required),
+      startDate: new FormControl('', Validators.required),
+      endDate: new FormControl('')
     });
   }
 
@@ -36,15 +38,37 @@ export class AddEmployeeComponent implements OnInit {
    * This is the action when the submit button is pressed
    */
   public submitForm() {
-    console.log("submit button press");
-    let employee = new Employee();
-    employee.firstName = this.employeeForm.get("firstName").value;
-    employee.lastName = this.employeeForm.get("lastName").value;
-    employee.jobTitle = this.employeeForm.get("jobTitle").value;
-    employee.birthDate = this.employeeForm.get("birthDate").value;
-    employee.startDate = this.employeeForm.get("startDate").value;
+    if (!this.employeeForm.invalid) {
+      let employee = new Employee();
+      employee.firstName = this.employeeForm.get("firstName").value;
+      employee.lastName = this.employeeForm.get("lastName").value;
+      employee.jobTitle = this.employeeForm.get("jobTitle").value;
+      employee.birthDate = this.employeeForm.get("birthDate").value;
+      employee.startDate = this.employeeForm.get("startDate").value;
 
-    this.employeeService.saveEmployee(employee);
+      this.employeeService.saveEmployee(employee);
+      this._snackBar.openFromComponent(EmployeeAddedComponent, {
+        duration: 10000,
+      });
+      // this.buildForm();
+      this.employeeForm.reset();
+    }
+  }
+
+  public clearForm() {
+    this.employeeForm.reset();
   }
 
 }
+
+
+@Component({
+  selector: 'snack-bar-component-employee-added',
+  template: `<span class="snack-bar-component">New Employee Added!</span>`,
+  styles: [`
+    .snack-bar-component {
+      color: white;
+    }
+  `],
+})
+export class EmployeeAddedComponent { }
