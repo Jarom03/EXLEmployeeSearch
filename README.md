@@ -33,7 +33,7 @@ There is also a page created to facilitate creating users one at a time at http:
  - The application should now be running on http://localhost:8080
 
 ## Linux / MacOS:
- - Edit run.sh and update teh pats for JAVA_HOME and MAVEN_HOME for your setup
+ - Edit run.sh and update the paths for JAVA_HOME and MAVEN_HOME for your setup
  - Execute run.sh
  - Wait for script to complete build
  - The application should now be running on http://localhost:8080
