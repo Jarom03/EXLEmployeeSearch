@@ -12,6 +12,10 @@ If using a version of java other than 8, make sure to update the EXLEmployeeSear
 # Database Configuration
 By default, the application is configured to use an in memory, H2 database, but you can configure to use any database supported by spring. Information on how to configure can be found here: [Spring.io](https://docs.spring.io/spring-boot/docs/2.1.13.RELEASE/reference/html/boot-features-sql.html).
 
+Seed data is provided in EXLEmployeeSearch/EXLEmployeeSearch/src/main/resources/seed-data.json. By default this data will be loaded into the database on startup if the database contains no employee records. Feel free to modify the contents of the seed-data.json file. 
+
+There is also a page created to facilitate creating users one at a time at http://localhost:8080/add
+
 # Manual Build/Run
  - Verify that npm, java, and maven are all on your path
  - Open EXLEmployeeSearchFE directory and run the command "npm install"
