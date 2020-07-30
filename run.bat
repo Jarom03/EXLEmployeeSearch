@@ -4,8 +4,8 @@ set MAVEN_HOME=C:\apache-maven-3.6.3
 set PATH=%PATH%;%JAVA_HOME%/bin;%MAVEN_HOME%/bin
 
 cd ./EXLEmployeeSearchFE
-npm install
-npx -p @angular/cli ng build --prod
+call npm install
+call npx -p @angular/cli ng build --prod
 cd ../EXLEmployeeSearch
-mvn clean package
-mvn spring-boot:run
+call mvn clean package
+call mvn spring-boot:run
